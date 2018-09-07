@@ -10,6 +10,7 @@ tags:
 实在不知道应该写点啥，就整理一下如何用hexo写博客好了。
 
 先说一下基本配置：使用Hexo+GitHub Pages搭建博客，next主题以及Windows OS。
+<!-- more -->
 ## 1 新建文章
 以hello world为例，在hexo目录下命令行输入```hexo new "hello_world"```，然后会在source的_posts目录下生成一个hello_world.md文件,在该markdown文件中就可以编辑这篇文章的内容了。编辑完成后刷新博客，博客里便会出现这篇文章，同时hexo也会直接为这篇文章生成一个页面。
 ## 2 新建草稿
