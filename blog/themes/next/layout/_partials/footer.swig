@@ -22,9 +22,9 @@
 </div>
 
 {% if theme.footer.powered %}
-  <div class="powered-by">{#
+  /*<div class="powered-by">{#
   #}{{ __('footer.powered', '<a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a>') }}{#
-#}</div>
+#}</div>*/
 {% endif %}
 
 {% if theme.footer.powered and theme.footer.theme.enable %}
@@ -38,6 +38,13 @@
     #}NexT.{{ theme.scheme }}{#
   #}</a>{% if theme.footer.theme.version %} v{{ theme.version }}{% endif %}{#
 #}</div>
+{% endif %}
+
+{% if theme.footer.counter %}
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客<span id="busuanzi_value_site_uv"></span>人</span>
 {% endif %}
 
 {% if theme.footer.custom_text %}
