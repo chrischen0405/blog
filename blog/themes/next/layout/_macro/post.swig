@@ -361,6 +361,12 @@
         </div>
       {% endif %}
 
+<div>
+      {% if not is_index %}
+        {% include 'my-copyright.swig' %}
+      {% endif %}
+</div>
+
       {% if not is_index %}
       {% if theme.rating.enable or (theme.vkontakte_api.enable and theme.vkontakte_api.like) or (theme.facebook_sdk.enable and theme.facebook_sdk.like_button) or (theme.needmoreshare2.enable and theme.needmoreshare2.postbottom.enable) %}
         <div class="post-widgets">

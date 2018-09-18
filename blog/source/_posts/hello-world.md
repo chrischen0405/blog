@@ -1,6 +1,7 @@
 ---
 title: Hello World
 date: 2018-08-31 10:50:38
+copyright: true
 categories: "个人整理"
 tags:
 - hexo
