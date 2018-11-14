@@ -29,6 +29,8 @@ C.output
 D.legend  
 **答案**：A C  
 **解析**：`datalist`元素规定输入域的选项列表。`keygen`元素的作用是提供一种验证用户的可靠方法。`output`元素用于不同类型的输出。
+### 3.HTML5新增的布局标签
+`header`、`hgroup`、`nav`、`aside`、`section`、`article`、`footer`、`figure`、`menu`
 
 ## CSS3
 ### 1.下面有关CSS sprites说法错误的是
@@ -76,6 +78,14 @@ D.background-clip: initial;
 **解析**：
 - repaint(重绘) ，`repaint`发生更改时，元素的外观被改变，且在**没有改变布局**的情况下发生，如改变`outline`,`visibility`,`background color`，不会影响到dom结构渲染。
 - reflow(回流)，与`repaint`区别就是他会**影响到dom的结构渲染**，同时他会触发`repaint`，他会改变他本身与所有父辈元素(祖先)，这种开销是非常昂贵的，导致性能下降是必然的，页面元素越多效果越明显。
+### 5.盒子模型
+**解析**：  
+CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容：
+- **Margin(外边距)** - 清除边框外的区域，外边距是透明的。
+- **Border(边框)** - 围绕在内边距和内容外的边框。
+- **Padding(内边距)** - 清除内容周围的区域，内边距是透明的。
+- **Content(内容)** - 盒子的内容，显示文本和图像。  
+盒子模型分为普通盒子模型和怪异盒子模型，大多数浏览器的元素内容占据的空间是由`width`属性设置的，而内容周围的`padding`和`border`值是另外计算的。然而`IE 5`和`IE 6`的呈现却是不正确的。它们在怪异模式中使用自己的非标准模型，浏览器中元素的`width`属性不是内容的宽度，而是内容、内边距和边框的宽度的总和。
 
 
 ## JavaScript
@@ -103,10 +113,47 @@ inputElement.style["background-color"] = 'red'; // 这也是可以的
 - 十六进制：#FF0000
 - 简写的十六进制：#F00
 ### 2.页面有一个按钮button id为 button1，通过原生的js如何禁用？(IE 考虑IE 8.0以上版本)
-document.A.getElementById("button1").readolny= true;  
-document.B.getElementById("button1").setAttribute(“readolny”,”true”);  
-document.C.getElementById("button1").disabled = true;  
-document.D.getElementById("button1").setAttribute(“disabled”,”true”);  
+A.document.getElementById("button1").readolny= true;  
+B.document.getElementById("button1").setAttribute(“readolny”,”true”);  
+C.document.getElementById("button1").disabled = true;  
+D.document.getElementById("button1").setAttribute(“disabled”,”true”);  
 **答案**：C D  
 **解析**：`disabled`和`readOnly`都是表单的公有属性，`readOnly`是只读，`disabled`是禁用。  
 `setAttribute`在ie7以前是不能通过`style`和`class`设置属性的
+### 3.`[“1", "2", "3"].map(parseInt)`的执行结果是？
+**答案**：[1, NaN, NaN]  
+**解析**：通常使用parseInt时,只需要传递一个参数。但实际上,parseInt可以有两个参数，第二个参数是进制数
+
+
+## 网络
+### 1.HTTP状态码
+常见HTTP状态码：
+- 200 - 请求成功
+- 301 - 资源（网页等）被永久转移到其它URL
+- 404 - 请求的资源（网页等）不存在
+- 500 - 内部服务器错误
+
+HTTP状态码分类：
+- 1**   信息，服务器收到请求，需要请求者继续执行操作
+- 2**   成功，操作被成功接收并处理
+- 3**   重定向，需要进一步的操作以完成请求
+- 4**   客户端错误，请求包含语法错误或无法完成请求
+- 5**   服务器错误，服务器在处理请求的过程中发生了错误
+### 2.GET和POST的区别
+- （1）GET请求在浏览器回退时是无害的，POST会再次提交请求
+- （2）GET请求会被浏览器主动缓存，而POST不会，除非手动设置
+- （3）GET请求参数会被完整的保留在浏览器历史记录里，而POST中的参数不会被保留
+- （4）GET请求在URL中传递的参数是有长度限制的（不固定，因浏览器决定），而POST没有限制
+- （5）GET请求参数通过URL传递，而POST放在request.body上
+- （6）GET请求产生的URL地址可以被收藏，而POST不可以
+- （7）GET请求只能进行URL编码，而POST支持多种编码方式
+- （8）GET请求只接受ASC2字符，而对参数的数据类型POST没有限制
+- （9）GET请求比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感数据
+
+## 其他
+### 1.哪些操作会造成内存泄漏？
+1、闭包引起的内存泄漏；  
+2、意外的全局变量引起的内存泄漏；  
+3、没有清理的DOM元素引起的内存泄漏   
+4、被遗忘的定时器或者回调函数；  
+5、子元素存在引用引起的内存泄漏；
