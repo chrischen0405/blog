@@ -11,48 +11,64 @@ tags:
 - 面试
 ---
 有些刷题遇到的题目，怕以后忘记，整理起来可以方便回顾。
-<!-- more -->
+    <!-- more -->
 
 ## HTML5
-### 1.常见的浏览器端的存储技术有哪些
-A.cookie  
-B.localStorage  
-C.session  
-D.userData  
-**答案**：ABD
-**解析**：  
-cookie 是靠谱的浏览器都支持；localStorge 比 cookie 存的更多，获取更方便，而且存储内容不会随请求发送给服务器；session 虽然需要 cookie 支持（通常存放加密过的 sessionId），但是不在浏览器端存放主要信息，排除；IE 支持 userData 存储数据，但是基本很少使用到，除非有很强的浏览器兼容需求。
-### 2.下面哪些是HTML5 新增的表单元素
+
+### 1.下面哪些是HTML5 新增的表单元素
 A.datalist  
 B.optgroup  
 C.output  
 D.legend  
 **答案**：A C  
 **解析**：`datalist`元素规定输入域的选项列表。`keygen`元素的作用是提供一种验证用户的可靠方法。`output`元素用于不同类型的输出。
-### 3.HTML5新增的布局标签
+### 2.HTML5新增的布局标签
 `header`、`hgroup`、`nav`、`aside`、`section`、`article`、`footer`、`figure`、`menu`
-
-## CSS3
-### 1.下面有关CSS sprites说法错误的是
-A.允许你将一个页面涉及到的所有零星图片都包含到一张大图中去  
-B.利用CSS的“background-image”，“background-repeat”，“background-position”的组合进行背景定位  
-C.CSS Sprites虽然增加了总的图片的字节，但是很好地减少网页的http请求，从而大大的提高页面的性能  
-D.CSS Sprites整理起来更为方便，同一个按钮不同状态的图片也不需要一个个切割出来并个别命名  
+### 3.给定下面的 HTML 代码：
+```html
+<div id=”wrapper”>
+<div class=”wText”>…</div>…<!--more wText items here -->
+<div class=”wImg”>…</div>…<!--more wImg items here -->
+<div class=”wVideo”>…</div>…<!--more wVideo items here -->
+</div>
+```
+怎么能够取得 ”wrapper” 中全部项的集合？  
+A.$(‘#wrapper’).children();  
+B.$(‘#wrapper’).html();  
+C.$(‘#wrapper’).contents();  
+D.$(‘#wrapper’).find(“all”);  
 **答案**：C  
-**解析**：CSS Sprites  
-1.简介  
-CSS Sprites在国内很多人叫css精灵，是一种网页图片应用处理方式。它允许将一个页面涉及到的所有零星图片都包含到一张大图中， 利用CSS的“background-image”，“background- repeat”，“background-position”的组合进行背景定位， 访问页面时避免图片载入缓慢的现象。  
-2.优点  
-（1）CSS Sprites能很好地减少网页的http请求，从而大大的提高页面的性能，这是CSS Sprites最大的优点，也是其被广泛传播和应用的主要原因；  
-（2）CSS Sprites能减少图片的字节；  
-（3）CSS Sprites解决了网页设计师在图片命名上的困扰，只需对一张集合的图片命名，不需要对每一个小图片进行命名，从而提高了网页制作效率。  
-（4）CSS Sprites只需要修改一张或少张图片的颜色或样式来改变整个网页的风格。  
-3.缺点  
-（1）图片合并麻烦：图片合并时，需要把多张图片有序的合理的合并成一张图片，并留好足够的空间防止版块出现不必要的背景。  
-（2）图片适应性差：在高分辨的屏幕下自适应页面，若图片不够宽会出现背景断裂。  
-（3）图片定位繁琐：开发时需要通过工具测量计算每个背景单元的精确位置。  
-（4）可维护性差：页面背景需要少许改动，可能要修改部分或整张已合并的图片，进而要改动css。在避免改动图片的前提下，又只能（最好）往下追加图片，但这样增加了图片字节。  
-### 2.下述有关border:none以及border:0的区别，描述错误的是
+**解析**：  
+```js
+$(‘#wrapper’).children();  //（只沿着 DOM 树向下遍历单一层级）查询直接的子元素。而不管子元素的子元素。
+$(‘#wrapper’).html();  //返回的是dom结构。而不是集合
+$(‘#wrapper’).find(“all”);   //并没有all这个元素
+```
+### 4.span标签的width和height分别为多少？
+```html
+<div style=”width:400px;height:200px;”>
+  <span style=”float:left;width:auto;height:100%;”>
+           <i style=”position:absolute;float:left;width:100px;height:50px;”>hello</i>
+  </span>
+</div>
+```
+A.width = 0px，height = 0px  
+B.width = 400px，height = 200px  
+C.width = 100px，height = 50px  
+D.width = 0px，height = 200px  
+**答案**：D  
+**解析**：`span`标签无法设置宽高，但是`float`会把浮动元素变成块级元素，`span`元素继承父元素的`height`的高度`200px`，由于i设置为绝对定位会脱离原先的文档流，`span`元素`width`设置为`auto`，所以会变`0`
+### 5.`input`属于窗体元素,层级显示比`flash`、其它元素都高。请判断这句话的正确与否。
+错误，在`html`中，帧元素（`frameset`）的优先级最高，表单元素比非表单元素的优先级要高。  
+表单元素包括：文本输入框，密码输入框，单选框，复选框，文本输入域，列表框等等；  
+非表单元素包括：连接（`a`），`div`，`table`，`span`等。  
+所有的`html`元素又可以根据其显示分成两类：有窗口元素以及无窗口元素。有窗口元素总是显示在无窗口元素的前面。  
+有窗口元素包括：`select`元素，`object`元素，以及`frames`元素等等。  
+无窗口元素：大部分`html`元素都是无窗口元素。  
+
+
+## CSS3   
+### 1.下述有关border:none以及border:0的区别，描述错误的是
 A.border:none表示边框样式无  
 B.border:0表示边框宽度为0  
 C.当定义了border:none，即隐藏了边框的显示，实际就是边框宽度为0  
@@ -61,7 +77,7 @@ D.当定义边框时，仅设置边框宽度也可以达到显示的效果
 **解析**：  
 C:当定义border:none时，表示无边框样式，浏览器并不会对边框进行渲染，也就没有实际的宽度；  
 D:定义边框时，除了设置宽度外，还必须设置边框的样式才能显示出来。
-### 3.下面哪条声明能固定背景图片
+### 2.下面哪条声明能固定背景图片
 A.background-attachment:fixed;  
 B.background-attachment:scroll;  
 C.background-origin: initial;  
@@ -74,11 +90,12 @@ D.background-clip: initial;
 `inherit`规定应该从父元素继承`background-attachment`属性的设置。
 - `background-origin`属性规定`background-position`属性相对于什么位置来定位。
 - `background-clip`属性规定背景的绘制区域。
-### 4.重绘与回流的区别
+
+### 3.重绘与回流的区别
 **解析**：
 - repaint(重绘) ，`repaint`发生更改时，元素的外观被改变，且在**没有改变布局**的情况下发生，如改变`outline`,`visibility`,`background color`，不会影响到dom结构渲染。
 - reflow(回流)，与`repaint`区别就是他会**影响到dom的结构渲染**，同时他会触发`repaint`，他会改变他本身与所有父辈元素(祖先)，这种开销是非常昂贵的，导致性能下降是必然的，页面元素越多效果越明显。
-### 5.盒子模型
+### 4.盒子模型
 **解析**：  
 CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容：
 - **Margin(外边距)** - 清除边框外的区域，外边距是透明的。
@@ -112,17 +129,72 @@ inputElement.style["background-color"] = 'red'; // 这也是可以的
 - 数值：rgb(255, 0, 0)
 - 十六进制：#FF0000
 - 简写的十六进制：#F00
+
 ### 2.页面有一个按钮button id为 button1，通过原生的js如何禁用？(IE 考虑IE 8.0以上版本)
 A.document.getElementById("button1").readolny= true;  
 B.document.getElementById("button1").setAttribute(“readolny”,”true”);  
 C.document.getElementById("button1").disabled = true;  
 D.document.getElementById("button1").setAttribute(“disabled”,”true”);  
 **答案**：C D  
-**解析**：`disabled`和`readOnly`都是表单的公有属性，`readOnly`是只读，`disabled`是禁用。  
+**解析**：`disabled`和`readOnly`都是表单的公有属性，`readOnly`是只读，`disabled`是禁用。`readOnly`只针对`input(text/password)`和`textarea`有效，而`disabled`对于所有的表单元素都有效，包括`select, radio, checkbox, button`等。  
 `setAttribute`在ie7以前是不能通过`style`和`class`设置属性的
 ### 3.`[“1", "2", "3"].map(parseInt)`的执行结果是？
 **答案**：[1, NaN, NaN]  
 **解析**：通常使用parseInt时,只需要传递一个参数。但实际上,parseInt可以有两个参数，第二个参数是进制数
+### 4.下列代码存在几个变量没有被回收？
+```js
+var i = 1;
+var i = 2;
+var add = function() {
+    var i = 0;
+    return function()
+{
+        i++;
+        console.log(i);
+    }
+}();
+add();
+```
+**答案**：3  
+**解析**：  
+变量回收规则：
+- 全局变量不会被回收。
+- 局部变量会被回收，也就是函数一旦运行完以后，函数内部的东西都会被销毁。
+- 只要被另外一个作用域所引用就不会被回收（闭包）
+
+全局变量不会被回收，但是会被覆盖，所以第一个`i`被第二个`i`覆盖了，第二个`i`没有被回收，变量`add`被赋值了一个匿名函数，所以也没有被回收。虽然局部变量会被回收，但是`add`函数中形成了一个闭包，所以里面的变量`i`也不会被回收。
+### 5.以下代码的输出结果是
+```js
+var f = function g() {
+        return 23;
+    };
+typeof g();
+```
+A."number"  
+B."undefined"  
+C."function"  
+D.Error  
+**答案**：D  
+**解析**：  
+js定义函数的方法：  
+1、函数声明：```function foo(){...}```  
+2、函数表达式：```var foo = function(){...}```  
+3、构造函数：```var foo = new Function(...)```  
+除此以外，类似```var foo = function bar(){...}```这样的定义函数的方法就是第二种函数表达式，在函数外部无法通过`bar`访问到函数，因为这已经变成了一个表达式。所以`g`就是`undefined`，`g()`就会抛出异常。
+### 6.javascirpt中的数字在计算机内存储为多少Byte？
+8Byte，Javascript中，由于其变量内容不同，变量被分为基本数据类型变量和引用数据类型变量。基本类型变量用八字节内存，存储基本数据类型(数值、布尔值、null和未定义)的值，引用类型变量则只保存对对象、数组和函数等引用类型的值的引用(即内存地址)。
+### 7.```+new Array(017)```输出？
+`+`是一元运算符，无运算效果，但是可以将字符串等转为`number`类型，`017`是八进制，故而是`Array(15)`，这里相当于对于一个未赋值但是长度为15的数组进行`number`类型转化，其结果为`NaN`
+
+
+## 浏览器
+### 1.常见的浏览器端的存储技术有哪些
+A.cookie  
+B.localStorage  
+C.session  
+D.userData  
+**答案**：ABD  
+**解析**：cookie 是靠谱的浏览器都支持；localStorge 比 cookie 存的更多，获取更方便，而且存储内容不会随请求发送给服务器；session 虽然需要 cookie 支持（通常存放加密过的 sessionId），但是不在浏览器端存放主要信息，排除；IE 支持 userData 存储数据，但是基本很少使用到，除非有很强的浏览器兼容需求。
 
 
 ## 网络
@@ -139,6 +211,7 @@ HTTP状态码分类：
 - 3**   重定向，需要进一步的操作以完成请求
 - 4**   客户端错误，请求包含语法错误或无法完成请求
 - 5**   服务器错误，服务器在处理请求的过程中发生了错误
+
 ### 2.GET和POST的区别
 - （1）GET请求在浏览器回退时是无害的，POST会再次提交请求
 - （2）GET请求会被浏览器主动缓存，而POST不会，除非手动设置
