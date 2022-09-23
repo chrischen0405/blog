@@ -27,9 +27,8 @@ type: "about"
 **2018.10-2018.11 个人项目**  
 该小游戏主体使用lufylegend游戏引擎编写；图片压缩使用canvas完成；图片裁剪使用jQuery插件cropper实现
 ## 联系方式
-- 电子邮件 [chrischen0405@gmail.com](mailto:chrischen0405@gmail.com)
+- 电子邮件 [chrischen0405@qq.com](mailto:chrischen0405@qq.com)
 - GitHub [chrischen0405](https://github.com/chrischen0405)
-- 微博 [幽小鬼_](https://weibo.com/p/1005055902368392/home?from=page_100505&mod=TAB#place)
 - 简书 [幽小鬼](https://www.jianshu.com/u/c6a5a7f59d5f)
 ## 兴趣爱好
 打DOTA，偶尔还会在B站上做做up主，[个人中心](https://space.bilibili.com/17898937)(但是已经好久没更新了TAT)
